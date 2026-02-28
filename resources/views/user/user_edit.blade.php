@@ -29,8 +29,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('profile.update') }}" method="POST" class="space-y-6">
-                @csrf
+            <form action="{{ route('user.update', $user->id) }}" method="POST" class="space-y-6">
                 {{-- 管理者が編集する場合のためのID --}}
                 @if(isset($user->id) && $user->id !== Auth::user()->id)
                     <input type="hidden" name="id" value="{{ $user->id }}">

@@ -93,7 +93,7 @@
                                 <td class="p-4 text-blue-600">{{ $user->email }}</td>
                                 <td class="p-4 text-center">
                                     <div class="flex justify-center space-x-2">
-                                        <a href="{{ route('profile.edit', $user->id) }}"
+                                        <a href="{{ route('user.edit', $user->id) }}"
                                             class="bg-white border border-gray-300 px-3 py-1 rounded text-xs font-bold hover:bg-gray-100 transition shadow-sm">
                                             編集
                                         </a>
