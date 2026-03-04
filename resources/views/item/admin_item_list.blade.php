@@ -202,7 +202,7 @@
                 <form action="{{ route('item.index') }}" method="GET" style="display: flex; gap: 15px; align-items: center;">
                     {{-- カテゴリー選択を追加 --}}
                     <select name="category" class="styled-select" style="min-width: 160px;">
-                        <option value="">すべて</option>
+                        <option value="">すべての商品</option>
                         <option value="ペン" {{ request('category') == 'ペン' ? 'selected' : '' }}>ペン</option>
                         <option value="シャープペン" {{ request('category') == 'シャープペン' ? 'selected' : '' }}>シャープペン</option>
                         <option value="ノート" {{ request('category') == 'ノート' ? 'selected' : '' }}>ノート</option>
