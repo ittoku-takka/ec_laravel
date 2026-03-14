@@ -33,7 +33,6 @@
                 <hr class="my-6 border-gray-100">
                 <h3 class="text-lg font-bold mb-4 flex items-center">📦 お届け先情報の入力</h3>
 
-                {{-- 追加した住所情報 --}}
                 <div class="mb-4">
                     <label class="block text-sm font-bold text-gray-700 mb-1">お届け先お名前（フルネーム）</label>
                     <input type="text" name="billing_name" class="w-full border-gray-300 rounded-lg shadow-sm"
@@ -58,11 +57,23 @@
                         placeholder="1-2-3 〇〇マンション101" required>
                 </div>
 
-                <div class="mb-8">
+                <div class="mb-6">
                     <label class="block text-sm font-bold text-gray-700 mb-1">電話番号（ハイフンなし）</label>
                     <input type="text" name="billing_tel" class="w-full border-gray-300 rounded-lg shadow-sm"
                         placeholder="09012345678" required>
                 </div>
+
+                {{-- ★ここから追加：管理者権限の設定セクション★ --}}
+                <div class="mb-8 p-4 bg-red-50 rounded-xl border border-dashed border-red-200">
+                    <label class="block text-sm font-bold text-red-700 mb-2">🛡️ システム権限設定</label>
+                    <select name="role"
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500">
+                        <option value="0">一般ユーザー（通常のお買い物用）</option>
+                        <option value="1">管理者（ADMIN PANELへのアクセス許可）</option>
+                    </select>
+                    <p class="text-xs text-red-500 mt-2 font-medium">※注意：管理者を選ぶと全ての在庫・売上情報が閲覧可能になります。</p>
+                </div>
+                {{-- ★ここまで追加★ --}}
 
                 <button type="submit"
                     class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-bold shadow-lg transition">

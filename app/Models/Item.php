@@ -10,19 +10,28 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'category',
-        'price',
-        'stock',
+        'user_id',    // ★ 出品者ID（必須！）
+        'title',      // 商品名
+        'category',   // カテゴリー
+        'price',      // 値段
+        'stock',      // 在庫
         'image1',
         'image2',
         'image3',
         'image4',
         'image5',
         'image6',
-        'detail',
-        'user_id'
+        'description', // ★ 設計図を description にした場合はここも合わせる
+        'delete_flg'
     ];
+
+    /**
+     * この商品を出品したユーザー（管理者）を取得
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     // Cartとの関係
     public function carts()
@@ -35,10 +44,10 @@ class Item extends Model
     {
         return $this->hasMany(BuyHistory::class);
     }
+
     // 商品の1枚目の画像を自動で取得する設定
     public function getMainImageAttribute()
     {
-        // もし image1 が空なら image2、それも空なら no_image を出す
-        return $this->image1 ?: $this->image2 ?: 'no_image.jpg';
+        return $this->image1 ?: ($this->image2 ?: 'no_image.jpg');
     }
 }

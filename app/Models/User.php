@@ -15,13 +15,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_admin',
         'role',
+        'is_admin',
         'billing_name',
         'billing_post_code',
         'billing_address1',
         'billing_address2',
         'billing_tel',
+        'delete_flg',
     ];
 
     protected $hidden = [
@@ -32,5 +33,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => 'integer',
     ];
 }

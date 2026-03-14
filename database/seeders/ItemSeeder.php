@@ -7,36 +7,28 @@ use App\Models\Item;
 
 class ItemSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
+        // 太郎さんの商品 (user_id: 1)
         Item::create([
             'user_id' => 1,
-            'title' => 'サンプル商品A',
-            'category' => 1,
+            'title' => '太郎の出品：サンプルA',
+            'category' => 'ペン',
             'price' => 1200,
             'stock' => 50,
             'image1' => 'sample1.jpg',
-            'image2' => 'sample1_2.jpg',
-            'image3' => 'sample1_3.jpg',
-            'image4' => null,
-            'image5' => null,
-            'image6' => null,
-            'detail' => 'これはサンプル商品の詳細です。',
+            'description' => 'これはID:1（太郎）が管理する商品です。',
         ]);
 
+        // kanri2さんの商品 (user_id: 2)
         Item::create([
-            'user_id' => 1,
-            'title' => 'サンプル商品B',
-            'category' => 2,
+            'user_id' => 2,
+            'title' => 'kanri2の出品：サンプルB',
+            'category' => 'ノート',
             'price' => 2500,
             'stock' => 30,
             'image1' => 'sample2.jpg',
-            'image2' => 'sample2_2.jpg',
-            'image3' => null,
-            'image4' => null,
-            'image5' => null,
-            'image6' => null,
-            'detail' => '別のサンプル商品の詳細です。',
+            'description' => 'これはID:2（kanri2）が管理する商品です。',
         ]);
     }
 }

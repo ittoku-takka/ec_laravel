@@ -37,10 +37,9 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
 
-            // 3. 【ここを修正】DBに合わせて kanri@techis.jp を許可し、roleが 0 でも通るようにします
-            if ($user->email === 'kanri@techis.jp' || $user->role === 'admin' || $user->is_admin == 1) {
+            // 3. 【修正済み】メールアドレス指定をやめ、role が 1 なら全員許可する
+            if ((int) $user->role === 1) {
                 $request->session()->regenerate();
-                // route('item.index') へ強制移動
                 return redirect()->route('item.index');
             }
 
@@ -56,7 +55,8 @@ class LoginController extends Controller
     // 通常ログイン後の振り分け（標準機能用）
     protected function authenticated(Request $request, $user)
     {
-        if ($user->email === 'kanri@techis.jp' || $user->role === 'admin') {
+        // ここも role 判定に修正
+        if ((int) $user->role === 1) {
             return redirect()->route('item.index');
         }
         return redirect()->route('item_list');
